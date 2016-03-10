@@ -1,0 +1,569 @@
+// Import external libraries.
+@import "compass";
+@import "breakpoint";
+@import "singularitygs";
+@import "toolkit-no-css";
+@import "susy";
+
+// Import variables, abstractions, base styles and components using globbing.
+//
+// Globbing will always import files alphabetically. Optimally, all your
+// components should be self-contained and explicit enough to not have any
+// contained styles leak into unrelated components: The import order should not
+// affect the result.
+//
+// If there are variables, functions or mixins that depend on each other and
+// therefore need to be imported in a specific order you can import them
+// directly. Variables-, function- or mixin providing partials should never
+// output any styles themselves: Importing them multiple times to resolve
+// dependencies shouldn't be a problem.
+@import "variables/**/*";
+@import "abstractions/**/*";
+@import "base/**/*";
+@import "components/**/*";
+
+// Susy Media Layouts @see http://susy.oddbird.net/guides/reference/#ref-media-layouts
+$tab: 44em 12; // At 44em use 12 columns.
+$desk: 70em 16; // At 70em use 16 columns.
+$nav: max-width 850px;
+$phone-land: 480px;
+$toggler: 704px;
+$responsive-menu: 784px;
+$slideshow: 1280px;
+
+$imagesPath: "../images";
+
+/* ----------------------------------------------------
+	Reset
+------------------------------------------------------- */
+
+.l-content img {
+	height: auto;
+}
+
+/* ----------------------------------------------------
+	General layout
+------------------------------------------------------- */
+
+#content-outer {
+	clear: both;
+}
+
+.l-content > .block {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+/* ----------------------------------------------------
+	Logo/Top Nav
+------------------------------------------------------- */
+
+#l-header-wrapper {
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	z-index: 100;
+	background: #fff;
+	-webkit-transition: all .2s ease;
+	-moz-transition: all .2s ease;
+	-ms-transition: all .2s ease;
+	-o-transition: all .2s ease;
+	transition: all .2s ease;
+	
+	&.header-fixed {
+		
+	  @include breakpoint($responsive-menu) {
+		position: fixed;
+		z-index: 2000;
+		opacity: .95;
+		box-shadow: 0px -4px 20px 0px #444;
+		-webkit-transition: all .2s ease;
+		-moz-transition: all .2s ease;
+		-ms-transition: all .2s ease;
+		-o-transition: all .2s ease;
+		transition: all .2s ease;
+		
+	  }
+		
+		.l-header {
+			margin-bottom: 0;
+			
+			.l-branding {
+				padding: 0px;
+				@include breakpoint($toggler) {
+					padding: 6px;
+				}
+				
+				img {
+					display: none;
+					@include breakpoint($toggler) {
+						width: 150px;
+						display: inline;
+					}
+				}
+				
+			}
+			
+			ul.nice-menu {
+				margin-top: 20px;
+			}
+			
+			.responsive-menus.responsified span.toggler {
+			  margin-top: 6px;
+			}
+			
+		}
+	}
+	
+}
+
+.l-branding {
+  padding: 10px;
+  text-align: center;
+  
+}
+
+.l-header {
+  background: #fff;
+  /* background-color: rgba(255, 255, 255, .7); */
+  padding-left: 0!important;
+  padding-right: 0!important;
+  
+  .responsive-menus.responsified span.toggler {
+	  box-shadow: none;
+	  text-transform: uppercase;
+	  background: #333;
+	  color: #bbb;
+	  font-size: 18px;
+	  padding: 10px;
+	  margin: 4px;
+	  
+	  @include breakpoint($toggler) {
+		  margin-top: 20px;
+	  }
+	  
+  }
+  
+  ul.responsive-menus-simple {
+	  
+	  &#rm-removed {
+		  
+		  span.nolink {
+			background-color: #bbb;
+			width: 100%;
+			display: block;
+			text-align: center;
+			padding: 10px;
+			color: #666;
+			text-transform: uppercase;
+			font-size: 14px;
+		  }
+		  
+		  li li {
+			  font-size: 14px;
+		  
+			  a {
+				  padding: .8em;
+				  text-transform: capitalize;
+			  }
+		  
+		  }
+		  
+		  > li.last {
+			  background: $op-blue;
+		  }
+		  
+	  }
+  }
+  
+}
+
+
+/* ----------------------------------------------------
+	Contact bar
+------------------------------------------------------- */
+
+#home-contact-wrapper,
+#contact-wrapper {
+	text-align: center;
+	padding: 26px;
+	background: #222;
+	
+	div {
+		font-weight: 500;
+		font-size: 20px;
+		color:#fff;
+		a.arrow-link:hover {
+			color: #fff;
+		}
+		a.arrow-link:after {
+			margin-left: 6px;
+		}
+	}
+}
+
+/* ----------------------------------------------------
+	Footer
+------------------------------------------------------- */
+
+#footer-wrapper {
+	text-align: center;
+	background: #222;
+	padding-top: 30px;
+	p {
+		font-size: 13px;
+		color: #777;
+		padding: 20px;
+		margin: 0;
+		a:hover {
+			color:#fff;
+		}
+		
+	}
+	
+	.footer-social-link {
+		display: inline-block;
+		height: 30px;
+		width:30px;
+		background: url(#{$imagesPath}/social_sprite.png) no-repeat;
+		font-size: 1px;
+		text-indent: -1000px;
+		overflow:hidden;
+		margin: 0 3px;
+		
+		&.linkedin {
+			background-position-x: -30px;
+		}
+		
+		&.twitter {
+			background-position-x: -60px;
+		}
+	}
+}
+
+/* ----------------------------------------------------
+	Board/Executives pages
+------------------------------------------------------- */
+
+.page-board-directors,
+.page-executive-team {
+	
+	.view-display-id-page,
+	.view-display-id-page_1 {
+	
+	
+	  .views-row {
+		 margin-bottom: 30px;
+		 padding-bottom: 30px;
+		 border-bottom: 1px solid #ddd;
+		 
+		.views-field-nid a {
+			display: block;
+			position: relative;
+			top: -80px;
+		}
+		 
+		.views-field-field-photo {
+			
+			img {
+				display: block;
+				margin: 0 auto;
+				width: 50%;
+				height: auto;
+				
+					@include breakpoint($phone-land) {
+						width: inherit;
+					}
+				}
+			@include breakpoint($phone-land){
+				float: left;
+				margin-right: 20px;
+			}
+		}
+		
+		.views-field-title,
+		.views-field-field-corporate-title {
+			text-align: center;
+			@include breakpoint($phone-land) {
+				text-align: left;
+			}
+		}
+		
+		.views-field-title,
+		.views-field-field-corporate-title,
+		.views-field-field-quote,
+		.views-field-body,
+		.views-field-field-linkedin-url {
+			@include breakpoint($phone-land){
+				margin-left: 156px
+			}
+		}
+		
+		.views-field-title h2 {
+			margin-bottom: 10px;
+		}
+		
+		.views-field-field-quote {
+			padding: 26px;
+			margin-top: 20px;
+			background: #FFD177;
+			font-size: 1.1em;
+			line-height: 1.6em;
+			font-style: italic;
+			border-radius: 8px;
+			-webkit-border-radius: 8px;
+			border: 1px solid #fab95b;
+		}
+		
+		.views-field-field-linkedin-url a {
+			padding-left: 22px;
+			background: url(#{$imagesPath}/linkedin_small.gif) left 3px no-repeat;
+		}
+		
+	  }
+	}
+	
+	.block--views-board-of-directors-block-2,
+	.block--views-board-of-directors-block-1
+	 {
+		
+		h4 {
+			margin-bottom: 4px;
+		}
+		
+		p.bio-title {
+			font-style: italic;
+		}	
+	}
+	
+}
+
+
+/* ----------------------------------------------------
+	Glossary
+------------------------------------------------------- */
+
+.page-glossary {
+
+	h2.lexicon-letter {
+		background: #f2f2f2;
+		border: 1px solid #ddd;
+		padding: 10px 20px;
+	}
+	
+	dt {
+		font-weight: 500;
+		text-transform: uppercase;
+	}
+	
+	dd {
+		border-bottom: 1px solid #ddd;
+		margin-bottom: 30px;
+	}
+	
+	a.lexicon_go_to_top_link {
+		font-weight: 700;
+		display: inline-block;
+		margin-bottom: 30px;
+		
+	}
+	
+	.lexicon-links {
+		text-align: center;
+		background: $op-blue;
+		border-radius: 6px;
+		padding: 10px;
+		text-transform: uppercase;
+		color: #888;
+		margin: 20px 0;
+		
+		a {
+			text-transform: uppercase;
+			display: inline-block;
+			color: #fff;
+			padding: 4px 8px;
+			margin: 3px;
+			font-size: 18px;
+			font-weight: 500;
+			border-radius: 4px;
+			
+			&:hover{
+				color: $body;
+				background-color: #fff;
+				text-decoration: none;
+			}	
+		}
+	}
+	
+	.lexicon-description {
+		display: none;
+	}
+}
+
+/* ----------------------------------------------------
+	Blog/News/Careers etc. node view
+------------------------------------------------------- */
+
+.page-blog .view-blog.view-display-id-page .views-row,
+.page-news .view-press-releases.view-display-id-page .views-row,
+.page-careers .view-careers.view-display-id-page .views-row {
+	margin-bottom: 30px;
+	padding-bottom: 30px;
+	border-bottom: 1px solid #ddd;
+
+	h2.node__title {
+		margin-bottom: 8px;
+		font-weight: 500;
+		font-size: 28px;
+	}
+	
+	.field--name-field-main-image img {
+		border: 1px solid #ddd;
+	}
+	
+	footer.node__submitted p {
+		font-size: .9em;
+		font-style: italic;
+		color: #888;
+		margin: 0;
+	}
+	
+	.node-readmore {
+		clear: left;
+	}
+	
+}
+
+.section-blog {
+	
+	footer.node__submitted p {
+		font-size: .9em;
+		font-style: italic;
+		color: #888;
+		margin: 0;
+	}
+	
+	#comments {
+		
+		h2.comments__title {
+			padding-top: 30px;
+			margin-top: 30px;
+			border-top: 1px solid #ddd;
+		}
+		
+		p.comment__submitted {
+			font-size: .9em;
+			font-style: italic;
+			color: #888;
+		}
+		
+		p.comment__submitted,
+		h3 {
+		  margin: .9em 0;
+		}
+		
+		 .links a {
+			text-transform: capitalize;
+			font-size: .9em;
+		}
+		
+		.field--name-comment-body p {
+			font-size: .9em;
+		}
+			
+		.indented {
+			padding-left: 20px;
+			border-left: 1px solid #ddd;
+			margin-left: 0;
+		}
+	
+	}
+	
+	@include at-breakpoint($desk) {
+		#title-wrapper h1 {
+			font-size: 34px;
+		}
+	}
+	
+	.node-readmore {
+		clear: left;
+	}
+}
+
+/* ----------------------------------------------------
+	White Papers & Case Studies
+------------------------------------------------------- */
+
+.page-node-80 #block-views-case-studies-block-1 {
+	margin-top: 30px;
+	padding-top: 30px;
+	border-top: 1px solid #ddd;
+	
+	h2.block__title {
+		margin-top: 0;
+	}
+}
+
+/* ----------------------------------------------------
+	Careers
+------------------------------------------------------- */
+
+.node--job-posting .field__label {
+	margin: 20px 0;
+}
+
+
+/* ----------------------------------------------------
+	Industries & Solutions pages - Highlight Bar Grid
+------------------------------------------------------- */
+
+.highlight-grid-container {
+	
+	width: 100%;
+	
+	@include at-breakpoint($tab) {
+	
+		.highlight-box {
+		
+			width: 50%;
+			padding: 0 20px;
+			float:left;
+			
+			&:nth-child(odd) {
+				clear:left;
+			}
+		
+		}
+	}
+	
+}
+
+/* ----------------------------------------------------
+	Sidebar Social Block
+------------------------------------------------------- */
+
+.l-region--sidebar-second {
+
+	.social-link {
+		display: block;
+		margin-bottom:10px;
+	}
+
+	.social-link-image {
+		display: inline-block;
+		height: 30px;
+		width:30px;
+		background: url(#{$imagesPath}/social_sprite.png) left center no-repeat;
+		overflow:hidden;
+		margin: 0 10px 0 0;
+		vertical-align: middle;
+		
+		&.linkedin {
+			background-position-x: -30px;
+		}
+		
+		&.twitter {
+			background-position-x: -60px;
+		}
+	}
+}

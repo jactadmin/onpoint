@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the OnPoint Clients feature.
+ */
+
+include_once 'onpoint_clients.features.inc';

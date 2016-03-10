@@ -1,0 +1,7 @@
+name = OnPoint Commerce
+description = Invoicing system and settings
+core = 7.x
+package = Features
+version = 7.x-1.0-beta1
+project = onpoint_commerce
+features[features_api][] = api:2

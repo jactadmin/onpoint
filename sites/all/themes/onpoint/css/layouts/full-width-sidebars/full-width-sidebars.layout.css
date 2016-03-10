@@ -1,0 +1,277 @@
+/*******************************************************************************
+ * simple.layout.scss
+ *
+ * Styling of the "simple" layout demonstrating the Compass grid extension Susy
+ * and building mobile first layouts.
+ ******************************************************************************/
+.l-header,
+.l-main,
+.l-footer {
+  *zoom: 1;
+  max-width: 940px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+.l-header:after,
+.l-main:after,
+.l-footer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.l-region--highlighted,
+.l-region--help,
+.l-region--sidebar-first,
+.l-region--sidebar-second {
+  margin-bottom: 20px;
+}
+
+#breadcrumb-outer {
+  width: 100%;
+  background: #f2f2f2;
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+  font-size: .9em;
+  margin-bottom: 30px;
+  margin-top: -30px;
+  float: left;
+}
+#breadcrumb-outer .breadcrumb {
+  padding: 0 10px;
+  max-width: 950px;
+  margin: 0 auto;
+}
+#breadcrumb-outer .breadcrumb a:before {
+  content: '\2190';
+  margin-right: 6px;
+  display: inline-block;
+  white-space: pre;
+}
+
+/* ----------------------------------------------------
+	Main Content
+------------------------------------------------------- */
+#title-wrapper {
+  margin-top: 176px;
+  margin-bottom: 30px;
+}
+@media (min-width: 704px) {
+  #title-wrapper {
+    margin-top: 120px;
+  }
+}
+
+/* ----------------------------------------------------
+	Page title images
+------------------------------------------------------- */
+#title-wrapper {
+  background: #12a0bf;
+}
+
+#title-wrapper h1 {
+  color: #fff;
+  font-weight: 300;
+  font-size: 26px;
+  margin: 0 auto;
+  padding: 20px 0;
+  max-width: 950px;
+}
+@media (min-width: 44em) {
+  #title-wrapper h1 {
+    font-size: 34px;
+  }
+}
+
+/* ----------------------------------------------------
+	Solutions page title icons
+------------------------------------------------------- */
+/* Secondary */
+.page-node-80 #title-wrapper h1:before {
+  /* White Papers */
+  content: url(../../../images/service_icon_small_06.gif);
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+  vertical-align: -13px;
+  margin-right: 6px;
+}
+
+/* ----------------------------------------------------
+	Sidebar Blocks
+------------------------------------------------------- */
+.l-region--sidebar-second .block {
+  padding: 20px;
+  background: #f2f2f2;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+.l-region--sidebar-second .block h2.block__title {
+  margin-top: 0;
+  font-size: 1.2em;
+}
+.l-region--sidebar-second .block a {
+  font-weight: 500;
+}
+.l-region--sidebar-second .block p, .l-region--sidebar-second .block li {
+  font-size: .9em;
+}
+.l-region--sidebar-second .block ul, .l-region--sidebar-second .block ol {
+  padding-left: 20px;
+}
+.l-region--sidebar-second .block li {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.l-region--sidebar-second .block .views-row, .l-region--sidebar-second .block p {
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+.l-region--sidebar-second .block .views-row .views-field-created, .l-region--sidebar-second .block p .views-field-created {
+  font-size: .8em;
+  font-style: italic;
+}
+
+/** Sidebar Hubspot Newsletter Signup **/
+#block-block-5 {
+  background: #ffd177;
+  border-color: #fab95b;
+}
+
+.hbspt-form .hs-form.stacked .actions {
+  padding: 0 !important;
+  margin-left: 0 !important;
+  text-align: center;
+}
+.hbspt-form .hs-form.stacked .actions .hs-button {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/** Awards Block **/
+#block-block-6 .sidebar-subhead {
+  font-weight: 500;
+  color: #12a0bf;
+  margin-top: 1em;
+  margin-bottom: 0;
+}
+#block-block-6 .sidebar-byline {
+  font-style: italic;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+
+@media (min-width: 44em) {
+  .l-header,
+  .l-main,
+  .l-footer {
+    max-width: 940px;
+  }
+
+  .l-branding {
+    width: 22.22222%;
+    float: left;
+    margin-right: 3.7037%;
+  }
+
+  .l-region--header {
+    width: 74.07407%;
+    float: right;
+    margin-right: 0;
+  }
+
+  .l-region--navigation {
+    clear: both;
+  }
+
+  .has-sidebar-first .l-content,
+  .has-sidebar-second .l-content,
+  .has-two-sidebars .l-content {
+    width: 65.4321%;
+    float: left;
+    margin-right: 3.7037%;
+  }
+  .has-sidebar-first .l-region--sidebar-first,
+  .has-sidebar-first .l-region--sidebar-second,
+  .has-sidebar-second .l-region--sidebar-first,
+  .has-sidebar-second .l-region--sidebar-second,
+  .has-two-sidebars .l-region--sidebar-first,
+  .has-two-sidebars .l-region--sidebar-second {
+    width: 30.8642%;
+    float: right;
+    margin-right: 0;
+  }
+  .has-sidebar-first .l-region--sidebar-second,
+  .has-sidebar-second .l-region--sidebar-second,
+  .has-two-sidebars .l-region--sidebar-second {
+    clear: right;
+  }
+}
+@media (min-width: 70em) {
+  .l-header,
+  .l-main,
+  .l-footer {
+    max-width: 940px;
+  }
+
+  .l-branding {
+    width: 22.93578%;
+    float: left;
+    margin-right: 2.75229%;
+  }
+
+  .l-region--header {
+    width: 74.31193%;
+    float: right;
+    margin-right: 0;
+  }
+
+  .has-sidebar-first .l-content {
+    width: 74.31193%;
+    float: right;
+    margin-right: 0;
+  }
+  .has-sidebar-first .l-region--sidebar-first {
+    width: 22.93578%;
+    float: left;
+    margin-right: 2.75229%;
+  }
+
+  .has-sidebar-second .l-content {
+    width: 67.88991%;
+    float: left;
+    margin-right: 2.75229%;
+  }
+  .has-sidebar-second .l-region--sidebar-second {
+    width: 29.3578%;
+    float: right;
+    margin-right: 0;
+    clear: none;
+  }
+
+  .has-two-sidebars .l-content {
+    width: 48.62385%;
+    float: left;
+    margin-right: 2.75229%;
+    margin-left: 25.68807%;
+  }
+  .has-two-sidebars .l-region--sidebar-first,
+  .has-two-sidebars .l-region--sidebar-second {
+    width: 22.93578%;
+    float: left;
+    margin-right: 2.75229%;
+  }
+  .has-two-sidebars .l-region--sidebar-first {
+    margin-left: -77.06422%;
+  }
+  .has-two-sidebars .l-region--sidebar-second {
+    float: right;
+    margin-right: 0;
+    clear: none;
+  }
+}

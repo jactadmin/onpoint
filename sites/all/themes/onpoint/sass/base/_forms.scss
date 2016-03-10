@@ -1,0 +1,54 @@
+/* ----------------------------------------------------
+	Forms
+------------------------------------------------------- */
+
+form label {
+margin-bottom: 10px;
+font-weight: 500;
+text-transform: uppercase;
+font-size: .9em;
+color: #666;	
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+textarea {
+	max-width: 100%;
+	border: 1px solid #ccc;
+	box-shadow: none;
+	padding: 8px;
+	background: #ddd;
+	
+	&:hover {
+		border-color: #999;
+	}
+	
+	&:focus {
+		background-color: #fff;
+	}
+}
+
+input[type='submit'] {
+	border: none;
+	background: $op-blue;
+	border-radius: 4px;
+	padding: 10px 20px;
+	margin: 20px 20px 20px 0;
+	color: #fff;
+	font-weight: 500;
+	
+	&#edit-preview {
+		background: $gray-button;
+		color: #333;
+		font-weight: 300;
+	}
+	
+}
+
+input[type='submit']:hover {
+	background: $op-blue-hover;
+}
+input[type='submit']#edit-preview:hover {
+  background: $gray-button-hover;
+}

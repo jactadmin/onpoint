@@ -1,0 +1,582 @@
+@import "susy";
+@import "breakpoint";
+@import "../../variables/**/*";
+
+$imagesPath: "../../../images";
+$solutionsImg: -86px;
+
+// Susy Variables
+
+// Set consistent vertical and horizontal spacing units.
+$vert-spacing-unit: 20px;
+$horz-spacing-unit: 1em;
+
+// Define Susy grid variables mobile first.
+$total-columns: 4;
+$column-width: 4em;
+$gutter-width: $horz-spacing-unit;
+$grid-padding: 5px;
+
+$container-style: magic;
+$container-width: 960px;
+
+// Susy Media Layouts @see http://susy.oddbird.net/guides/reference/#ref-media-layouts
+$tab: 44em 12; // At 44em use 12 columns.
+$desk: 70em 16; // At 70em use 16 columns.
+$toggler: 704px;
+$slideshow: 1280px;
+$phone: max-width 480px;
+
+.l-header,
+.l-main,
+.l-footer {
+  @include container; // Define these elements as the grid containers.
+  
+  .l-main, .l-footer {
+  	margin-bottom: $vert-spacing-unit;
+  }
+}
+
+.l-region--highlighted,
+.l-region--help,
+.l-region--sidebar-first,
+.l-region--sidebar-second {
+  margin-bottom: $vert-spacing-unit;
+}
+
+
+/* ----------------------------------------------------
+	Main Slideshow
+------------------------------------------------------- */
+
+#views_slideshow_cycle2_main_homepage_slider-default .views-slideshow-cycle2-main-frame-row {
+	width: 100%!important;
+	height: 500px;
+	overflow: hidden;
+	@include breakpoint($phone) {
+		height: auto;
+	}
+
+	.views-field-field-background-image {
+		    display: inline-block;
+		    position: relative;
+		    right: -50%;
+	}
+	
+	.views-field-field-background-image img {
+			position: relative;
+			left: -50%;
+			height: auto!important;
+			max-width: none;
+			vertical-align: bottom;
+			display: block;
+	}
+	
+	#slide-copy-wrapper {
+		background: rgba(14,27,49,0.7);
+		padding: 2%;
+	}
+	
+    .slide-copy {
+		position: absolute;
+		text-align: center;
+		/* left: 20px; */
+		color: #fff;
+		width: 100%;
+		padding: 0 5%;
+		@include breakpoint($phone) {
+			position: static;
+		}
+		
+		h1 {
+			font-weight: 300;
+			text-transform: uppercase;
+			font-size: 28px;
+			margin: 0;
+			text-shadow: 0 0 15px #000000;
+			span {
+				color: #6feaf9;
+			}
+		}
+		
+		p {
+			font-weight: 300;
+			font-size: 16px;
+			margin-top: 12px;
+		}
+		
+	}
+
+}
+
+#views_slideshow_cycle2_main_homepage_slider-default .views-slideshow-cycle2-main-frame-row-item .views-field-nothing {
+	position: absolute;
+	left: 0;
+	top: 170px;
+	@include breakpoint ($toggler) {
+		top: 130px;
+	}
+	width: 100%;
+	@include breakpoint ($phone) {
+		padding: 0 10px;
+	}
+}
+
+/* ----------------------------------------------------
+	Home Intro
+------------------------------------------------------- */
+
+#home-introduction-wrapper {
+	background: #12a0bf;
+	padding: 20px 10px;
+	
+	h2 {
+		color: #fff;
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 1.6em;
+		margin: 0 auto;
+		display:inline;
+	}
+}
+
+/* ----------------------------------------------------
+	Solutions Links
+------------------------------------------------------- */
+
+#home-solutions-links-wrapper {
+	/* background: #f2f2f2; */
+}
+
+.solutions-links-inner {
+	background: #fff;
+	padding: 0;
+}
+
+.view-homepage-solutions-links {
+	table {
+	  width: 100%;
+	  margin: 20px 0;
+		td {
+			display: block;
+			width: 100%;
+			/* border: 1px solid #d8d8d8; */
+			padding: 8px;
+			border-radius:6px;
+			&:hover {
+				background: #eee;		
+				/*
+-moz-box-shadow:    inset 2px 0 20px #eee;
+				-webkit-box-shadow: inset 2px 0 20px #eee;
+				box-shadow:         inset 2px 0 20px #eee;
+*/
+				.solutions-link-img {
+					background-position-y: -86px;
+				}
+				h3 {
+						color: #000;
+				}
+			}
+			a {
+				text-align: center;
+				text-decoration: none;
+				h3 {
+					text-transform: uppercase;
+					font-size: 18px;
+					color: $op-blue;
+					margin: 0 0 8px 0;
+				}
+				
+				.solutions-link-img-80 + h3 {
+				    color: #F7731B;
+				}
+				
+				p {
+					color: $body;
+					font-size: 14px;
+					padding: 0 20px;
+					margin-top: 0;
+				}
+			}
+			
+			.solutions-link-img {
+				display: block;
+				height: 86px;
+				width: 86px;
+				margin: 10px auto;
+				background: url(#{$imagesPath}/services_sprite.png) no-repeat;
+			}
+			
+			
+			.solutions-link-img-80 {
+				background-position: $solutionsImg * 5 0;
+			}
+			
+			.solutions-link-img-19 {
+				background-position: $solutionsImg * 4 0;
+			}
+			
+			.solutions-link-img-22 {
+				background-position: $solutionsImg * 3 0;
+			}
+			
+			.solutions-link-img-18 {
+				background-position: $solutionsImg * 2 0;
+			}
+			
+			.solutions-link-img-17 {
+				background-position: $solutionsImg 0;
+			}
+			
+			.solutions-link-img-16 {
+				background-position: 0 0;
+			}
+		
+		}
+		
+	}	
+	
+}
+
+/* ----------------------------------------------------
+	Main Promo Area
+------------------------------------------------------- */
+
+#home-promo-wrapper-outer {
+	text-align: center;
+}
+
+#home-promo-wrapper {
+	background: #111;
+	color: #fff;
+	padding: 1px;
+
+	h1, h2, h3, h4, h5, h6 {
+		color: #fff;
+	}
+	
+	h2 {
+		text-transform: uppercase;
+		font-size: 1.6em;
+		
+		span {
+			color: $bar-red;
+		}
+	}	
+	
+	p {
+
+	}
+
+}
+
+/* ----------------------------------------------------
+	Testimonials
+------------------------------------------------------- */
+
+#testimonial-intro {
+	background: $op-blue;
+	padding: 30px;
+	color: #fff;
+}
+
+#testimonial-intro .field__item {
+	font-size: 27px;
+	width: 85%;
+	text-shadow: 1px 1px 1px #000;
+	margin: 38px auto;
+	@include breakpoint($phone) {
+		font-size: 19px;
+		margin: 0;
+		width: auto;
+	}
+}
+
+
+#home-testimonial-wrapper {
+	font-size: 18px;
+	
+	.home-testimonial-inner {
+		background: url(#{$imagesPath}/testimonial_bubble.gif) no-repeat left center;
+		padding: 50px 20px 50px 80px;
+		@include breakpoint($phone) {
+		  padding-left: 20px;
+		  background: none;	
+		}	
+		
+		.testimonial-name {
+			font-style: italic;
+			color: #666;
+			margin: 10px 0;
+			display: inline-block;
+		}
+	}
+}
+
+
+/* ----------------------------------------------------
+	Call to Action
+------------------------------------------------------- */
+
+#home-cta-wrapper {
+	background: url(#{$imagesPath}/cta_bg_2.jpg) no-repeat;
+	background-size: cover;
+	color: #fff;
+	padding: 20px 20px 40px 20px;
+	text-align: center;
+}
+
+
+
+/* ----------------------------------------------------
+	START RESPONSIVE STYLES
+------------------------------------------------------- */
+
+@include at-breakpoint($tab) { // At a given Susy Media Layout, use a given amount of columns.
+  .l-header,
+  .l-main,
+  .l-footer {
+    @include set-container-width; // Reset only the container width (elements have already been declared as containers).
+  }
+
+  .l-branding {
+    @include span-columns(3, 12); // Span 3 out of 12 columns.
+  }
+  .l-region--header{
+    @include span-columns(9 omega, 12); // Span the last (omega) 9 columns of 12.
+  }
+  .l-region--navigation {
+    clear: both;
+  }
+
+  .has-sidebar-first,
+  .has-sidebar-second,
+  .has-two-sidebars {
+    .l-content {
+      @include span-columns(8, 12); // Span 8 out of 12 columns.
+    }
+    .l-region--sidebar-first,
+    .l-region--sidebar-second {
+      @include span-columns(4 omega, 12); // Span the last (omega) 4 columns of 12.
+    }
+    .l-region--sidebar-second {
+      clear: right;
+    }
+  }
+  // Solutions links
+  .view-homepage-solutions-links {
+	  table {
+		  td {
+		    display: table-cell;
+			width: 25%;
+			vertical-align: top;
+			
+			.solutions-link-img {
+
+			}
+			
+			h3 {
+			  
+			}
+			
+			p {
+
+			}
+			
+			}
+			
+	  }
+  }
+  // Main Promo
+	#home-promo-wrapper-outer {
+		/* background: url(#{$imagesPath}/main_promo_bg_industry_2.jpg) no-repeat; */
+		background: #555;
+		background-size: cover;
+	}
+	
+	#home-promo-wrapper {
+		background: rgba(0,0,0,0.7);	
+	}
+	//Testimonials
+	
+	#testimonial-intro {
+	  background: transparent;
+	  padding: 1px;
+	}
+	
+	#testimonial-intro .field__item {
+		font-size: 27px;
+		width: 85%;
+		text-shadow: 1px 1px 1px #000;
+		margin: 38px auto;
+	}
+	
+	#home-testimonial-wrapper {
+		font-size: 18px;
+		
+		.home-testimonial-inner {
+		  background: url(#{$imagesPath}/testimonial_bubble.gif) no-repeat left center;
+		  padding-left: 80px;
+		  
+		}
+	}
+	
+	// Call to Action
+	#home-cta-wrapper {
+		
+		.home-cta-inner {
+		
+			p {
+				text-align: left;
+				float: left;
+				font-size: 19px;
+				margin-left: 20px;
+				width: 85%;
+			}
+			img {
+				margin-right: 20px;
+				float: left;
+			}
+		}
+	}
+
+}
+
+@include at-breakpoint($desk) {
+  .l-header,
+  .l-main,
+  .l-footer {
+    @include set-container-width; // Reset only the container width (elements have already been declared as containers).
+  }
+
+  .l-branding {
+    @include span-columns(4, 16); // Span 6 out of 16 columns.
+  }
+  .l-region--header{
+    @include span-columns(12 omega, 16); // Span the last (omega) 10 columns of 16.
+  }
+
+  .has-sidebar-first {
+    .l-content {
+      @include span-columns(12 omega, 16); // Span the last (omega) 12 columns of 16.
+    }
+    .l-region--sidebar-first {
+      @include span-columns(4, 16); // Span 4 out of 16 columns.
+    }
+  }
+  .has-sidebar-second {
+    .l-content {
+      @include span-columns(12, 16); // Span 12 out of 16 columns.
+    }
+    .l-region--sidebar-second {
+      @include span-columns(4 omega, 16); // Span the last (omega) 4 columns of 16.
+      clear: none;
+    }
+  }
+
+  .has-two-sidebars {
+    .l-content {
+      @include span-columns(8, 16); // Span 8 out of 16 columns.
+      @include push(4, 16);  // Push element by adding 4 out of 16 columns of left margin.
+    }
+    .l-region--sidebar-first,
+    .l-region--sidebar-second {
+      @include span-columns(4, 16); // Span 4 out of 16 columns.
+    }
+    .l-region--sidebar-first {
+      @include pull(12, 16); // Pull element by adding 12 out of 16 columns of negative left margin.
+    }
+    .l-region--sidebar-second {
+      @include omega; // This element spans the last (omega) column.
+      clear: none;
+    }
+  }
+  
+}
+
+
+@include breakpoint($slideshow) {
+
+	#views_slideshow_cycle2_main_homepage_slider-default .views-slideshow-cycle2-main-frame-row-item {		  
+		position: relative;
+		
+		.views-field-field-background-image {
+		    display: block;
+		    right: auto;
+		}
+		
+		.views-field-field-background-image img {
+			width:100%!important;
+			min-width: 1350px;
+			margin-top: 40px;
+			left: auto;		
+		}
+		
+	}
+}
+
+@include breakpoint($container-width) {
+
+	#views_slideshow_cycle2_main_homepage_slider-default .views-slideshow-cycle2-main-frame-row { 
+	height: 580px;
+	}
+
+	#views_slideshow_cycle2_main_homepage_slider-default .views-slideshow-cycle2-main-frame-row-item {
+	
+		.views-field-nothing {
+			width: 960px;
+			left: 50%;
+			margin-left: -480px;
+			top: 116px;
+		}
+		
+		.slide-copy {
+			/* left: 30px; */
+			width: 100%;
+			padding: 0;
+			
+			h1 {
+				font-size: 44px;
+			}
+			
+			p {
+				font-size: 20px;
+				margin-bottom: 0;
+			}
+		
+			#slide-copy-wrapper {
+				margin: 0 auto;
+				width: 500px;
+				padding: 20px;
+			}
+			
+			.cta-link-blue,
+			.cta-link-blue-dl,
+			.hs-cta-node a {
+				display: inline-block;
+			}
+		
+		}
+		
+	}
+	
+	#content-outer {
+		position: relative;
+		margin-top: -110px;
+		z-index: 1000;
+	}
+	
+	#home-introduction-wrapper {
+/* 		height: 110px; */
+		padding: 20px 0;
+		
+		.home-introduction-inner {
+			 width: 830px;
+			 text-align: center;
+		}
+		
+		h2 {
+			font-size: 18px;
+		}
+	}
+}

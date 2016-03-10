@@ -1,0 +1,291 @@
+@import "compass";
+@import "breakpoint";
+@import "../variables/**/*";
+// Susy Media Layouts @see http://susy.oddbird.net/guides/reference/#ref-media-layouts
+$tab: 44em 12; // At 44em use 12 columns.
+$desk: 70em 16; // At 70em use 16 columns.
+$nav: max-width 850px;
+$phone: max-width 480px;
+$imagesPath: "../images";
+
+/* ----------------------------------------------------
+	Top Nav
+------------------------------------------------------- */
+
+.l-header ul.nice-menu {
+	margin-top: 31px;
+	text-align:center;
+	width: 100%;
+
+	> li {
+		background: none;
+		border: none;
+		/* text-transform: uppercase; */
+		font-size: 13px;
+		cursor: default;
+		padding: 0!important;
+		margin-right: 5px;
+		display:inline-block;
+		float: none;
+		text-align: left;
+		color: #000;
+		
+		> a:first-child{
+			color: #000;
+			padding: 0.5em 10px 0.5em 10px!important;
+			@include breakpoint($nav) {
+				padding: 0.5em 5px 0.5em 5px!important;	
+			}
+		}
+		
+		span.nolink {
+			padding: 0.5em 10px 0.5em 10px!important;	
+			@include breakpoint($nav) {
+				padding: 0.5em 5px 0.5em 5px!important;	
+			}
+		}	
+		
+		
+		&.active-trail {
+			background-color: $light-blue;
+		}
+		
+		&:hover {
+			background: #0089af;
+			color: #fff;			
+		
+			> a {
+				color:#fff;
+			}
+		
+		}
+
+	}
+	
+	> li span {
+		display: block;
+	}
+	
+	> li ul {
+		padding:0;
+		border:none;
+		top: 2.1em;
+	}
+	
+	> li li {
+		padding: 0px;
+		border: none;
+		background: #0089af;
+		text-transform: none;
+		
+		&.active-trail {
+			background: #666;
+		}
+		
+		a {
+			color: #fff;
+		}
+		
+		&:hover {
+			background: $light-blue;
+			
+			a {
+			color: #000;
+			}
+		}
+			
+	}
+	
+	li a {
+	  text-decoration: none;
+	  padding: 0.5em 10px 0.5em 10px !important;
+	}
+}
+
+ul.nice-menu-down li.menuparent:hover {
+	background-image: none;
+}
+
+/* ----------------------------------------------------
+	CTA Buttons
+------------------------------------------------------- */
+
+.cta-link-blue,
+.hs-cta-node a {
+	background: #F7731B;
+	display: inline-block!important;
+	padding: 20px!important;
+	color: #fff!important;
+	border: 1px solid #fff!important;
+	border-radius: 5px!important;
+	-webkit-border-radius: 5px!important;
+	text-transform: uppercase!important;
+	text-decoration: none!important;	
+	font-family: $baseFont;
+	font-size: 19px!important;
+	font-weight: 500!important;
+	margin-top: 20px;
+	@include breakpoint($phone) {
+		font-size: 13px!important;
+		padding: 14px!important;
+	}
+}
+
+/*
+.hs-cta-node a {
+	color: #fff!important;
+	text-transform: uppercase!important;
+	text-decoration: none!important;	
+	font-family: $baseFont;
+	font-size: 19px!important;
+}
+*/
+
+#introduction-wrapper .cta-link-blue,
+#introduction-wrapper .cta-link-blue-dl,
+#introduction-wrapper .hs-cta-node a,
+#home-promo-wrapper .cta-link-green {
+	margin-top: 0!important;
+	margin-bottom: 20px!important;
+}
+
+
+
+.cta-link-blue:hover,
+.hs-cta-node a:hover {
+	background: #ff9947!important; /* Old browsers */
+	display: inline-block!important;
+	padding: 20px!important;
+	color: #fff!important;
+	border: 1px solid #fff!important;
+	border-radius: 5px!important;
+	-webkit-border-radius: 5px!important;
+	text-transform: uppercase!important;
+	text-decoration: none!important;
+	@include breakpoint($phone) {
+		font-size: 13px!important;
+		padding: 14px 60px 14px 14px!important;
+	}
+}
+
+
+.cta-link-blue-dl {
+	@extend .cta-link-blue;		
+}
+
+.cta-link-blue-dl:hover {
+	background: #ff9947!important; /* Old browsers */
+	display: inline-block!important;
+	padding: 20px!important;
+	color: #fff!important;
+	border: 1px solid #fff!important;
+	border-radius: 5px!important;
+	-webkit-border-radius: 5px!important;
+	text-transform: uppercase!important;
+	text-decoration: none!important;
+	font-size: 19px!important;
+	@include breakpoint($phone) {
+		font-size: 13px!important;
+		padding: 14px 60px 14px 14px!important;
+	}
+}
+
+.cta-link-green {
+	background: #84c01d!important; /* Old browsers */
+	background-image: url(#{$imagesPath}/cta_arrow_right.png)!important;
+	background: url(#{$imagesPath}/cta_arrow_right.png), -moz-linear-gradient(top,  #84c01d 0%, #79a625 100%)!important; /* FF3.6+ */
+	background: url(#{$imagesPath}/cta_arrow_right.png), -webkit-gradient(linear, left top, left bottom, color-stop(0%,#84c01d), color-stop(100%,#79a625)); /* Chrome,Safari4+ */
+	background: url(#{$imagesPath}/cta_arrow_right.png), -webkit-linear-gradient(top,  #84c01d 0%,#79a625 100%)!important; /* Chrome10+,Safari5.1+ */
+	background: url(#{$imagesPath}/cta_arrow_right.png), -o-linear-gradient(top,  #84c01d 0%,#79a625 100%)!important; /* Opera 11.10+ */
+	background: url(#{$imagesPath}/cta_arrow_right.png), -ms-linear-gradient(top,  #84c01d 0%,#79a625 100%)!important; /* IE10+ */
+	background: url(#{$imagesPath}/cta_arrow_right.png), linear-gradient(to bottom,  #84c01d 0%,#79a625 100%)!important; /* W3C */
+	/* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#84c01d', endColorstr='#79a625',GradientType=0 ); */ /* IE6-9 */
+	background-repeat: no-repeat!important;
+	background-position: right center!important;
+	display: inline-block!important;
+	padding: 20px 70px 20px 20px!important;
+	color: #fff!important;
+	border: 1px solid #fff!important;
+	border-radius: 5px!important;
+	-webkit-border-radius: 5px!important;
+	text-transform: uppercase!important;
+	text-decoration: none!important;	
+	font-family: $baseFont;
+	font-size: 19px!important;
+	font-weight: 500!important;
+	margin-top:20px;
+	@include breakpoint($phone) {
+	  font-size: 13px!important;
+	  padding: 14px 60px 14px 14px!important;
+	}
+}
+
+.cta-link-green:hover {
+	background: #9ae000; /* Old browsers */
+	background-image: url(#{$imagesPath}/cta_arrow_right.png)!important;
+	background: url(#{$imagesPath}/cta_arrow_right.png), -moz-linear-gradient(top,  #9ae000 0%, #85ba00 100%)!important; /* FF3.6+ */
+	background: url(#{$imagesPath}/cta_arrow_right.png), -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9ae000), color-stop(100%,#85ba00))!important; /* Chrome,Safari4+ */
+	background: url(#{$imagesPath}/cta_arrow_right.png), -webkit-linear-gradient(top,  #9ae000 0%,#85ba00 100%)!important; /* Chrome10+,Safari5.1+ */
+	background: url(#{$imagesPath}/cta_arrow_right.png), -o-linear-gradient(top,  #9ae000 0%,#85ba00 100%)!important; /* Opera 11.10+ */
+	background: url(#{$imagesPath}/cta_arrow_right.png), -ms-linear-gradient(top,  #9ae000 0%,#85ba00 100%)!important; /* IE10+ */
+	background: url(#{$imagesPath}/cta_arrow_right.png), linear-gradient(to bottom,  #9ae000 0%,#85ba00 100%)!important; /* W3C */
+	/* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9ae000', endColorstr='#85ba00',GradientType=0 ); */ /* IE6-9 */
+	background-repeat: no-repeat!important;
+	background-position: right center!important;
+	display: inline-block!important;
+	padding: 20px 70px 20px 20px!important;
+	color: #fff!important;
+	border: 1px solid #fff!important;
+	border-radius: 5px!important;
+	-webkit-border-radius: 5px!important;
+	text-transform: uppercase!important;
+	text-decoration: none!important;	
+	font-family: $baseFont;
+	@include breakpoint($phone) {
+		font-size: 13px!important;
+		padding: 14px 60px 14px 14px!important;
+	}
+}
+
+
+.hs-form .hs-button {
+	background: #84c01d!important; /* Old browsers */
+	background: -moz-linear-gradient(top,  #84c01d 0%, #79a625 100%)!important; /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#84c01d), color-stop(100%,#79a625)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #84c01d 0%,#79a625 100%)!important; /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #84c01d 0%,#79a625 100%)!important; /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #84c01d 0%,#79a625 100%)!important; /* IE10+ */
+	background: linear-gradient(to bottom,  #84c01d 0%,#79a625 100%)!important; /* W3C */
+	font-size: 17px!important;
+	padding: 20px!important;
+	color: #fff!important;
+	border: 1px solid #fff!important;
+	border-radius: 5px!important;
+	-webkit-border-radius: 5px!important;
+	text-transform: uppercase!important;
+	text-decoration: none!important;	
+	font-family: $baseFont!important;
+	box-shadow: none!important;
+	text-shadow: none!important;
+}
+
+.hs-form .hs-button:hover {
+	background: #9ae000; /* Old browsers */
+	background: -moz-linear-gradient(top,  #9ae000 0%, #85ba00 100%)!important; /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9ae000), color-stop(100%,#85ba00))!important; /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #9ae000 0%,#85ba00 100%)!important; /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #9ae000 0%,#85ba00 100%)!important; /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #9ae000 0%,#85ba00 100%)!important; /* IE10+ */
+	background: linear-gradient(to bottom,  #9ae000 0%,#85ba00 100%)!important; /* W3C */
+	font-size: 17px!important;
+	padding: 20px!important;
+	color: #fff!important;
+	border: 1px solid #fff!important;
+	border-radius: 5px!important;
+	-webkit-border-radius: 5px!important;
+	text-transform: uppercase!important;
+	text-decoration: none!important;	
+	font-family: $baseFont!important;
+	box-shadow: none!important;
+	text-shadow: none!important;
+}

@@ -1,0 +1,111 @@
+<?php
+/**
+ * @file
+ * Install include file. Implements database schema. 
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function contentanalysis_schema() {
+  $schema['contentanalysis'] = array(
+    'description' => 'Creates database table for content analysis settings.',
+    'fields' => array(
+      'aid' => array(
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The id for the analysis.',
+      ),
+      // Aid.
+      'last_analysis' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The unix timestamp of the time the analysis was last run.',
+      ),
+      // Last_analysis.
+      'nid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The {node}.nid of an analyzed node.',
+      ),
+      // Nid.
+      'path' => array(
+        'type' => 'varchar',
+        'length' => '255',
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Drupal path of an analyzed page.',
+      ),
+      // Path.
+      'url' => array(
+        'type' => 'varchar',
+        'length' => '255',
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'URL of an analyzed page.',
+      ),
+      // URL.
+      'analyzers' => array(
+        'type' => 'varchar',
+        'length' => '255',
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Analyzers to use with node.',
+      ),
+      // Analyzers.
+    ),
+    'primary key' => array('aid'),
+    'indexes' => array(
+      'nid' => array('nid'),
+      'path' => array('path'),
+      'url' => array('url'),
+    ),
+
+  );
+  $schema['contentanalysis_status'] = array(
+    'description' => 'Creates database table for content analysis settings.',
+    'fields' => array(
+      'aid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The id for the analysis.',
+      ),
+      // Aid.
+      'analyzer' => array(
+        'type' => 'varchar',
+        'length' => '64',
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Analyzer id reporting the status.',
+      ),
+      // Analyzer.
+      'status' => array(
+        'type' => 'varchar',
+        'length' => '32',
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'text status.',
+      ),
+      // URL.
+      'statusi' => array(
+        'type' => 'int',
+        'size' => 'tiny',
+        'description' => 'Integer id of status',
+      ),
+      // Statusi.
+      'score' => array(
+        'type' => 'float',
+        'description' => 'Report score',
+      ),
+      // Score.
+    ),
+    'primary key' => array('aid', 'analyzer'),
+  );
+  return $schema;
+}

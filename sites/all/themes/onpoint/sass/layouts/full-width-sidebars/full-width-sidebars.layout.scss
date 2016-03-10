@@ -1,0 +1,311 @@
+/*******************************************************************************
+ * simple.layout.scss
+ *
+ * Styling of the "simple" layout demonstrating the Compass grid extension Susy
+ * and building mobile first layouts.
+ ******************************************************************************/
+@import "susy";
+@import "breakpoint";
+@import "../../variables/**/*";
+
+// Susy Variables
+
+// Set consistent vertical and horizontal spacing units.
+$vert-spacing-unit: 20px;
+$horz-spacing-unit: 3em;
+
+// Define Susy grid variables mobile first.
+$total-columns: 4;
+$column-width: 4em;
+$gutter-width: $horz-spacing-unit;
+$grid-padding: 10px;
+
+$container-style: magic;
+$container-width: 960px;
+
+$toggler: 704px;
+
+$imagesPath: "../../../images";
+
+// Susy Media Layouts @see http://susy.oddbird.net/guides/reference/#ref-media-layouts
+$tab: 44em 12; // At 44em use 12 columns.
+$desk: 70em 16; // At 70em use 16 columns.
+
+.l-header,
+.l-main,
+.l-footer {
+  @include container; // Define these elements as the grid containers.
+  margin-bottom: $vert-spacing-unit;
+}
+
+.l-region--highlighted,
+.l-region--help,
+.l-region--sidebar-first,
+.l-region--sidebar-second {
+  margin-bottom: $vert-spacing-unit;
+}
+
+#breadcrumb-outer{
+	width: 100%;
+	background: #f2f2f2;
+	border-bottom: 1px solid #ddd;
+	padding: 8px 0;
+	font-size: .9em;
+	margin-bottom: 30px;
+	margin-top: -30px;
+	float: left;
+	
+	.breadcrumb {
+		padding: 0 $grid-padding;
+		max-width: 950px;
+		margin: 0 auto;
+		
+		a:before {
+			content: '\2190';
+			margin-right: 6px;
+			display: inline-block;
+			white-space: pre;
+		}
+		
+	}
+}
+
+/* ----------------------------------------------------
+	Main Content
+------------------------------------------------------- */
+
+#title-wrapper {
+	margin-top: 176px;
+	margin-bottom: 30px;
+	
+	@include breakpoint($toggler) {
+		margin-top: 120px;
+	}
+}
+
+.front {
+	
+}
+
+/* ----------------------------------------------------
+	Page title images
+------------------------------------------------------- */
+
+#title-wrapper {
+	background: #12a0bf;
+}
+
+@mixin page-header-image-text() {
+	color: #fff;
+	font-weight: 300;
+	font-size: 26px;
+	margin: 0 auto;
+	padding: 20px 0;
+	max-width: 950px;
+}
+
+#title-wrapper h1
+
+ {
+	@include page-header-image-text();
+	@include at-breakpoint($tab) {
+		font-size: 34px;
+	}
+}
+
+
+/* ----------------------------------------------------
+	Solutions page title icons
+------------------------------------------------------- */
+
+@mixin secondaryTitleImg($icon) {
+	content: url(#{$imagesPath}/service_icon_small_#{$icon}.gif);
+	height: 50px;
+	width: 50px;
+	display: inline-block;
+	vertical-align: -13px;
+	margin-right: 6px;
+}
+
+/* Secondary */
+
+.page-node-80 #title-wrapper h1:before { /* White Papers */
+	@include secondaryTitleImg('06');
+}
+
+
+/* ----------------------------------------------------
+	Sidebar Blocks
+------------------------------------------------------- */
+
+.l-region--sidebar-second  .block {
+	padding: 20px;
+	background: #f2f2f2;
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	margin-bottom: 20px;
+	
+	h2.block__title {
+		margin-top: 0;
+		font-size: 1.2em;
+	}
+	
+	a {
+		font-weight: 500;
+	}
+	
+	p, li {
+		font-size: .9em;
+	}
+	
+	ul, ol {
+		padding-left: 20px;
+	}
+	
+	li {
+		font-weight: 500;
+		margin-bottom: 10px;
+	}
+	
+	.views-row, p {
+		margin-bottom: 10px;
+		margin-top: 0;
+		
+		.views-field-created {
+			font-size: .8em;
+			font-style: italic;
+		}
+	}
+	
+}
+
+/** Sidebar Hubspot Newsletter Signup **/
+
+#block-block-5 {
+	background: #ffd177;
+	border-color: #fab95b;
+}
+
+.hbspt-form {
+	
+	.hs-form.stacked .actions {
+		padding: 0!important;
+		margin-left: 0!important;
+		text-align: center;
+		
+		.hs-button {
+			display: block;
+			box-sizing: border-box;
+			width: 100%;
+		}
+		
+	}
+	
+}
+
+/** Awards Block **/
+
+#block-block-6 {
+	
+	.sidebar-subhead {
+		font-weight: 500;
+		color: $op-blue;
+		margin-top: 1em;
+		margin-bottom: 0;
+	}
+	
+	.sidebar-byline {
+		font-style: italic;
+		margin-bottom: 20px;
+		margin-top: 0px;
+	}
+}
+
+#block-block-7 {
+
+}
+
+
+@include at-breakpoint($tab) { // At a given Susy Media Layout, use a given amount of columns.
+  .l-header,
+  .l-main,
+  .l-footer {
+    @include set-container-width; // Reset only the container width (elements have already been declared as containers).
+  }
+
+  .l-branding {
+    @include span-columns(3, 12); // Span 4 out of 12 columns.
+  }
+  .l-region--header{
+    @include span-columns(9 omega, 12); // Span the last (omega) 8 columns of 12.
+  }
+  .l-region--navigation {
+    clear: both;
+  }
+
+  .has-sidebar-first,
+  .has-sidebar-second,
+  .has-two-sidebars {
+    .l-content {
+      @include span-columns(8, 12); // Span 8 out of 12 columns.
+    }
+    .l-region--sidebar-first,
+    .l-region--sidebar-second {
+      @include span-columns(4 omega, 12); // Span the last (omega) 4 columns of 12.
+    }
+    .l-region--sidebar-second {
+      clear: right;
+    }
+  }
+}
+
+@include at-breakpoint($desk) {
+  .l-header,
+  .l-main,
+  .l-footer {
+    @include set-container-width; // Reset only the container width (elements have already been declared as containers).
+  }
+
+  .l-branding {
+    @include span-columns(4, 16); // Span 6 out of 16 columns.
+  }
+  .l-region--header{
+    @include span-columns(12 omega, 16); // Span the last (omega) 10 columns of 16.
+  }
+
+  .has-sidebar-first {
+    .l-content {
+      @include span-columns(12 omega, 16); // Span the last (omega) 12 columns of 16.
+    }
+    .l-region--sidebar-first {
+      @include span-columns(4, 16); // Span 4 out of 16 columns.
+    }
+  }
+  .has-sidebar-second {
+    .l-content {
+      @include span-columns(11, 16); // Span 12 out of 16 columns.
+    }
+    .l-region--sidebar-second {
+      @include span-columns(5 omega, 16); // Span the last (omega) 4 columns of 16.
+      clear: none;
+    }
+  }
+
+  .has-two-sidebars {
+    .l-content {
+      @include span-columns(8, 16); // Span 8 out of 16 columns.
+      @include push(4, 16);  // Push element by adding 4 out of 16 columns of left margin.
+    }
+    .l-region--sidebar-first,
+    .l-region--sidebar-second {
+      @include span-columns(4, 16); // Span 4 out of 16 columns.
+    }
+    .l-region--sidebar-first {
+      @include pull(12, 16); // Pull element by adding 12 out of 16 columns of negative left margin.
+    }
+    .l-region--sidebar-second {
+      @include omega; // This element spans the last (omega) column.
+      clear: none;
+    }
+  }
+}

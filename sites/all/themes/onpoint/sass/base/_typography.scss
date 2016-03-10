@@ -1,0 +1,151 @@
+@import "../variables/**/*";
+
+
+body {
+	color: $body;
+}
+
+#title-wrapper h1 {
+	font-size: 25px;
+	text-transform: uppercase;
+}
+
+h3 {
+	margin-top: 30px;
+}
+
+h3, h5 {
+	color: $op-blue;
+	text-transform: uppercase;
+}
+
+p {
+	line-height: 1.7em;
+	margin: 20px 0;
+}
+
+a {
+	color: #F7731B;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #000;/*#0086ac;*/
+	text-decoration: underline;
+}
+
+.arrow-link:after {
+	content: '\2192';
+	margin-left: 6px;
+	display: inline-block;
+	white-space: pre;
+}
+
+article ul, .l-content .view ul {
+	padding-left: 20px;
+	list-style: none;
+
+	> li {
+		margin: 10px 0;
+		text-indent: -19px;
+		
+		.arrow-link:after {
+		  margin-left: 22px;
+		}
+		
+		&:before {
+			content: '\2022';
+			position: relative;
+			color: $op-blue;
+			margin-right: 13px;
+		}
+		
+		ul {
+			margin-top: 20px;
+			li {
+				margin: 8px 0;
+				font-style: italic;
+				
+				&:before {
+					content: '\203a';
+					font-size: 18px;
+					color: #888;
+					margin-right: 6px;
+				}
+			}
+		}
+		
+	}
+	
+	&.links {
+			text-indent: 0;
+			padding-left: 0;
+			
+			li {
+				text-indent: 0;
+				margin-right: 20px;
+				
+				&:before {
+					content: none;
+				}
+				
+			}
+			
+		}
+}
+
+.field__label {
+	font-weight: 500;
+}
+
+article ol {
+	padding-left: 20px;
+	
+	> li {
+		margin: 10px 0;
+	}
+	
+}
+
+dd {
+	padding-left: 30px;
+	margin-left: 0;
+}
+
+strong {
+	font-weight: 600;
+}
+
+
+/* ----------------------------------------------------
+	Custom classes
+------------------------------------------------------- */
+
+.large-copy {
+	font-size: 20px;
+}
+
+.large-callout {
+	font-size: 20px;
+	background: #ffd177;
+	border: 1px solid #fab95b;
+	padding: 20px;
+	margin-bottom: 30px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	clear: both;
+}
+
+.top-divider-hr {
+	border-top: 1px solid #ddd;
+	margin-top: 30px;
+	padding-top: 30px;
+}
+
+/* ----------------------------------------------------
+	MISC
+------------------------------------------------------- */
+
+.file-icon + a {
+	margin-left: 4px;
+}

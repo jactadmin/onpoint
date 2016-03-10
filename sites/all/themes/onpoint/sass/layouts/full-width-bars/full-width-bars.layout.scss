@@ -1,0 +1,350 @@
+@import "susy";
+@import "breakpoint";
+@import "../../variables/**/*";
+
+$imagesPath: "../../../images";
+
+// Susy Variables
+
+// Set consistent vertical and horizontal spacing units.
+$vert-spacing-unit: 20px;
+$horz-spacing-unit: 1em;
+
+// Define Susy grid variables mobile first.
+$total-columns: 4;
+$column-width: 4em;
+$gutter-width: $horz-spacing-unit;
+$grid-padding: 10px;
+
+$container-style: magic;
+$container-width: 960px;
+
+$toggler: 704px;
+$phone: max-width 480px;
+
+// Susy Media Layouts @see http://susy.oddbird.net/guides/reference/#ref-media-layouts
+$tab: 44em 12; // At 44em use 12 columns.
+$desk: 70em 16; // At 70em use 16 columns.
+
+
+.l-header,
+.l-main,
+.l-footer {
+  @include container; // Define these elements as the grid containers.
+}
+
+
+
+.l-region--highlighted,
+.l-region--help,
+.l-region--sidebar-first,
+.l-region--sidebar-second {
+  margin-bottom: $vert-spacing-unit;
+}
+
+
+/* ----------------------------------------------------
+	Regions
+------------------------------------------------------- */
+
+
+
+#introduction-wrapper,
+#body-top-wrapper,
+#highlight-bar-wrapper,
+#body-bottom-wrapper {
+	padding: 0;
+	
+	p {
+		font-size: 16px;
+	}
+}
+
+#body-top-wrapper + #body-bottom-wrapper {
+	padding-top: 0;
+}
+
+#body-top-wrapper {
+	margin-bottom: 30px;
+}
+
+#body-top-wrapper,
+#body-bottom-wrapper {
+
+	img {
+		margin: 10px auto;
+		display: block;
+		height: auto!important;
+		
+		@include breakpoint($phone) {
+			float: none!important;
+		}	
+	
+		@include at-breakpoint($tab) {
+			float:right;
+			margin-left: 30px;
+		}
+	
+	}
+}
+
+
+#introduction-wrapper {
+	h2 {
+		font-weight: 700;
+		margin-bottom: .5em;
+		font-size: 1.8em;
+	}
+}
+
+#highlight-bar-wrapper {
+	
+	a {
+		
+		&:hover	{
+			color: #000;
+			font-weight: 500;
+		}
+		
+	}
+	
+	a.arrow-link:after {
+		margin-left: 26px;
+	}
+}
+
+/* ----------------------------------------------------
+	Sticky Footer
+------------------------------------------------------- */
+/*
+* {
+	margin :0;
+	padding: 0;
+}
+
+html, body {
+	height: 100%;
+}
+
+.l-page {
+	min-height: 100%;
+}
+
+.l-page-inner {
+	overflow:auto;
+	padding-bottom: 140px;
+}
+
+#footer-wrapper {
+	position: relative;
+	margin-top: -140px; /* negative value of footer height
+	height: 140px;
+	clear:both;
+}
+*/
+
+/* ----------------------------------------------------
+	Testimonials
+------------------------------------------------------- */
+
+.testimonial {
+/* 	background: url(#{$imagesPath}/testimonial_bubble.gif) no-repeat left center; */
+	padding: 1px 30px;
+	margin: 0 0 30px 0;
+	background: $light-blue;
+}
+
+
+/* ----------------------------------------------------
+	Solutions page title icons
+------------------------------------------------------- */
+
+@mixin page-header-bg() {
+	background: #12a0bf;
+	padding: 20px;
+	max-width: none;
+	width: 100%;
+	float: left;
+	clear: both;
+}
+
+@mixin page-header-image-text() {
+	color: #fff;
+	font-weight: 300;
+	font-size: 34px;
+	margin: 0 auto;
+	padding: 17px 0;
+	max-width: 950px;
+}
+
+@mixin solutionsTitleImg($icon) {
+	content: url(#{$imagesPath}/service_icon_small_#{$icon}.gif);
+	height: 50px;
+	width: 50px;
+	display: inline-block;
+	vertical-align: -13px;
+	margin-right: 6px;
+}
+
+
+#title-wrapper
+{
+	@include page-header-bg();
+	margin-top: 172px;
+	
+	@include breakpoint($toggler) {
+		margin-top: 120px;
+	}
+}
+
+#title-wrapper h1
+{
+	@include page-header-image-text();
+}
+
+/* Solutions */
+
+
+.page-node-80 #title-wrapper h1:before {
+	@include solutionsTitleImg('06');
+}
+
+.page-node-19 #title-wrapper h1:before {
+	@include solutionsTitleImg('05');
+}
+
+.page-node-22 #title-wrapper h1:before {
+	@include solutionsTitleImg('04');
+}
+
+.page-node-18 #title-wrapper h1:before {
+	@include solutionsTitleImg('03');
+}
+
+.page-node-17 #title-wrapper h1:before {
+	@include solutionsTitleImg('02');
+}
+
+.page-node-16 #title-wrapper h1:before {
+	@include solutionsTitleImg('01');
+}
+
+
+/* ----------------------------------------------------
+	Call to Action
+------------------------------------------------------- */
+
+#cta-wrapper {
+	background: url(#{$imagesPath}/cta_bg_2.jpg) no-repeat;
+	background-size: cover;
+	color: #fff;
+	padding: 20px 20px 40px 20px;
+	text-align: center;
+}
+
+
+@include at-breakpoint($tab) { // At a given Susy Media Layout, use a given amount of columns.
+  .l-header,
+  .l-main,
+  .l-footer {
+    @include set-container-width; // Reset only the container width (elements have already been declared as containers).
+  }
+
+  .l-branding {
+    @include span-columns(3, 12); // Span 4 out of 12 columns.
+  }
+  .l-region--header{
+    @include span-columns(9 omega, 12); // Span the last (omega) 8 columns of 12.
+  }
+  .l-region--navigation {
+    clear: both;
+  }
+
+  .has-sidebar-first,
+  .has-sidebar-second,
+  .has-two-sidebars {
+    .l-content {
+      @include span-columns(8, 12); // Span 8 out of 12 columns.
+    }
+    .l-region--sidebar-first,
+    .l-region--sidebar-second {
+      @include span-columns(4 omega, 12); // Span the last (omega) 4 columns of 12.
+    }
+    .l-region--sidebar-second {
+      clear: right;
+    }
+  }
+  
+  // Introduction wrapper
+  
+  #introduction-wrapper {
+		
+  }
+  
+  // Call to Action
+	#cta-wrapper {
+		
+		.cta-inner {
+		
+			p {
+				text-align: center;
+				font-size: 19px;
+				margin-left: auto;
+				margin-right: auto; 
+				width: 85%;
+			}
+		}
+	}
+}
+
+@include at-breakpoint($desk) {
+  .l-header,
+  .l-main,
+  .l-footer {
+    @include set-container-width; // Reset only the container width (elements have already been declared as containers).
+  }
+
+  .l-branding {
+    @include span-columns(4, 16); // Span 6 out of 16 columns.
+  }
+  .l-region--header{
+    @include span-columns(12 omega, 16); // Span the last (omega) 10 columns of 16.
+  }
+
+  .has-sidebar-first {
+    .l-content {
+      @include span-columns(12 omega, 16); // Span the last (omega) 12 columns of 16.
+    }
+    .l-region--sidebar-first {
+      @include span-columns(4, 16); // Span 4 out of 16 columns.
+    }
+  }
+  .has-sidebar-second {
+    .l-content {
+      @include span-columns(12, 16); // Span 12 out of 16 columns.
+    }
+    .l-region--sidebar-second {
+      @include span-columns(4 omega, 16); // Span the last (omega) 4 columns of 16.
+      clear: none;
+    }
+  }
+
+  .has-two-sidebars {
+    .l-content {
+      @include span-columns(8, 16); // Span 8 out of 16 columns.
+      @include push(4, 16);  // Push element by adding 4 out of 16 columns of left margin.
+    }
+    .l-region--sidebar-first,
+    .l-region--sidebar-second {
+      @include span-columns(4, 16); // Span 4 out of 16 columns.
+    }
+    .l-region--sidebar-first {
+      @include pull(12, 16); // Pull element by adding 12 out of 16 columns of negative left margin.
+    }
+    .l-region--sidebar-second {
+      @include omega; // This element spans the last (omega) column.
+      clear: none;
+    }
+  }
+
+}
